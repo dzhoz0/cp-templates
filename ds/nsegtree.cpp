@@ -3,15 +3,13 @@ struct SegmentTree {
     vector<int> a;
     vector<int> st;
 
-    SegmentTree(int _n) {
-        n = _n;
-        a.assign(n + 1, 0);
+    SegmentTree(int n, vector<int> a): n(n), a(a) {
         st.assign(4 * n + 5, INF);
     }
 
     void build(int id, int l, int r) {
         if (l == r) {
-            st[id] = a[l];
+            st[id] = a[l - 1];
             return;
         }
         int mid = (l + r) >> 1;
